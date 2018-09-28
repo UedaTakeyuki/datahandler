@@ -1,9 +1,0 @@
-README.md
-setup.cfg
-setup.py
-datahandler/__init__.py
-datahandler/__main__.py
-datahandler.egg-info/PKG-INFO
-datahandler.egg-info/SOURCES.txt
-datahandler.egg-info/dependency_links.txt
-datahandler.egg-info/top_level.txt

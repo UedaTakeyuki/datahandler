@@ -26,16 +26,16 @@ def read():
   #
 
   for data_source in config["sources"]:
-    print (data_source["name"])
-    print (data_source)
+#    print (data_source["name"])
+#    print (data_source)
 
     # read errorhandler
     if "errorhandler" in data_source:
       errorhandler = data_source["errorhandler"]
-      print ("OK")
+#      print ("OK")
     else:
       errorhandler = None
-      print ("NG") 
+#      print ("NG") 
 
     # road data_source.
     reader = importlib.import_module(data_source["name"])

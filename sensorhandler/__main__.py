@@ -1,5 +1,5 @@
 #import sys
-import __init__ as datahandler
+import __init__ as sensorhandler
 
 '''
 usage = 'Usage: python {} [--s]'.format(__file__)
@@ -14,4 +14,4 @@ elif len(sys.argv) == 2:
 else:
   print usage
 '''
-datahandler.read()
+sensorhandler.read()
