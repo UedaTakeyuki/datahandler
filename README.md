@@ -1,32 +1,68 @@
-# getrpimodel
-Get Raspberry Pi model Name(eg: A, B, B+...)
+# sensorhandler
+Multipurpose sensorhandler, read the value from source & do somethings (send, save, trigger, ...) with it, as configed.
 
 ## install
 
 ```bash:
-pip install getrpimodel
+pip install sensorhandler
 ```
 
-## return
-String: 'Model Name' same string as the 'Model' column value of the [following Table](http://elinux.org/RPi_HardwareHistory), like as "A", "B", "B+", "2 Model B", "3 Model B" and so on.
+## input
+config.toml file on the current working directory. The contents of File is as follows:
 
-Miner info in parentheses, like (Beta), (ECN0001), or (with BCM2837) are removed; or appear with '--s' option, or 'model_strict()' function.
+```
+[[sources]]
+  name   = "dht22"
+  errorhandler = "errorhandler"
+  [[sources.values]]
+    name = "temp"
+    handlers = [
+      "send"#import os, "save"
+    ]
+  [[sources.values]]
+    name = "humidity"
+    handlers = [
+      "send"#, "save"
+    ]
+  [[sources.values]]
+    name = "humiditydeficit"
+    handlers = [
+      "send"#, "save"
+    ]
+
+
+[[sources]]
+  name   = "mh-z19"
+  [[sources.values]]
+    name = "co2"
+    handlers = [
+      "send", "save"
+  ]
+```
+
+The array of table ***sources*** is the array of data source sensor definition, consist of followings:
+
+- name: Sensor handler's name. The same name python file (with ".py" extention) will be dinamically imported and function ***read()*** on the imported module will be called. The return value of read() is expecte as a dictionally as key of value name and value like:
+``` {'humiditydeficit': '15.9', 'temp': 26.8, 'humidity': 37.6}```
+- values: handler difitition for each value, corresponding to the key of the dictionally of the return value of read() function.
+  - name: value name
+  - handlers: Value handler's name. The same name python file (with ".py" extention) will be dinamically imported and function ***handle(data_source_name, data_name, value):*** will be called with the Sensor handler's name, value name, and sensor value.
+- errorhandler: Error handler's name. The same name python file (with ".py" extention) will be dinamically imported for error handling of Sensor value reading. Currently, just stab.
 
 ## How to use 
 ### as python program.
 
 ```bash:
-python -m getrpimodel [--s] 
+python -m sensorhandler 
 ```
 
 ### as python library.
 
 ```python:
-import getrpimodel
+import sensorhandler
 
-print (getrpimodel.model())
-print (getrpimodel.model_strict())
+print (sensorhandler.read())
 ```
 
 ### history
-- 2018.09.19_version_0.1.13  add "Zero W", "3 Model B+"
+- 2018.09.28 first version confirmed Raspberry Pi model B2+
