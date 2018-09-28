@@ -44,6 +44,7 @@ The array of table ***sources*** is the array of data source sensor definition, 
 
 - name: Sensor handler's name. The same name python file (with ".py" extention) will be dinamically imported and function ***read()*** on the imported module will be called. The return value of read() is expecte as a dictionally as key of value name and value like:
 ``` {'humiditydeficit': '15.9', 'temp': 26.8, 'humidity': 37.6}```
+
 - values: handler difitition for each value, corresponding to the key of the dictionally of the return value of read() function.
   - name: value name
   - handlers: Value handler's name. The same name python file (with ".py" extention) will be dinamically imported and function ***handle(data_source_name, data_name, value):*** will be called with the Sensor handler's name, value name, and sensor value.
