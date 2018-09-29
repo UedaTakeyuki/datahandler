@@ -7,7 +7,7 @@ with open("README.md") as f:
 setup(
   name = 'sensorhandler',
   packages = ['sensorhandler'], # this must be the same as the name above
-  version = '0.1.1',
+  version = '0.1.2',
   description = 'Multipurpose sensorhandler, read the value from source & do somethings (send, save, trigger, ...) with it, as configed.',
   long_description=long_description,
   long_description_content_type="text/markdown",

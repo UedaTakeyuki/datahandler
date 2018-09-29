@@ -56,7 +56,7 @@ The array of table ***sources*** is the array of data source sensor definition, 
 ### as python program.
 
 ```bash:
-python -m sensorhandler 
+python -m sensorhandler [config_file_path]
 ```
 
 ### as python library.
@@ -64,8 +64,9 @@ python -m sensorhandler
 ```python:
 import sensorhandler
 
-print (sensorhandler.read())
+print (sensorhandler.read(config_file_path))
 ```
 
 ### history
-- 2018.09.28 first version confirmed Raspberry Pi model B2+
+- 0.1.1  2018.09.28  first version confirmed Raspberry Pi model B2+
+- 0.1.2  2018.09.29  add config_file_path
