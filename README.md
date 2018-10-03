@@ -68,8 +68,10 @@ import sensorhandler
 
 print (sensorhandler.read(config_file_path))
 ```
+## Q&A
+Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/sensorhandler/issues) without hesitation! 
 
-### history
+## history
 - 0.1.1  2018.09.28  first version confirmed Raspberry Pi model B2+
 - 0.1.2  2018.09.29  add config_file_path
 - 0.1.3  2018.09.29  add --config, --imppath, --list_imppath
